@@ -1,4 +1,4 @@
-package Medilux.senisionProject;
+package medilux.senisionProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
