@@ -21,10 +21,10 @@ spring:
       client:
         registration:
           google:
-            client-id: your-client-id
-            client-secret: your-client-secret
+            client-id: 641238456473-36dsj53541is0bti1fbrq82pgnnd9m0e.apps.googleusercontent.com
+            client-secret: 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
             scope:
               - profile
               - email
-            redirect-uri: "**"
+            redirect-uri: "http://localhost:8080/login/oauth2/code/google"
             client-name: Google

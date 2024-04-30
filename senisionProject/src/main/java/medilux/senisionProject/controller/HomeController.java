@@ -11,6 +11,12 @@ public class HomeController {
         return "login"; // Name of the view (HTML or template) to be displayed
     }
 
+    @GetMapping("/login")
+    public String login() {
+        System.out.println("HomeController.home");
+        return "login"; // Name of the view (HTML or template) to be displayed
+    }
+
     @GetMapping("/signup")
     public String signup() {
         return "signup"; // Refers to signup.html in the templates directory
