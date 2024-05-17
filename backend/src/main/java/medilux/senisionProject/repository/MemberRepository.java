@@ -7,5 +7,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Member findByEmail(String email);
+    Member findByUsername(String username);
+
+    Boolean existsByPhone(String phone);
+
+    //username을 받아 DB 테이블에서 회원을 조회하는 메소드 작성
+    Member findByPhone(String phone);
 }
