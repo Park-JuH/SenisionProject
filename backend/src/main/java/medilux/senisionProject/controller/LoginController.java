@@ -30,7 +30,8 @@ public class LoginController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        response.addHeader("Authorization", loginResponse.getAccess());
+        String accessToken = loginResponse.getAccess();
+        response.addHeader("Authorization", "Bearer " + accessToken);
         return ResponseEntity.ok(loginResponse.getMemberDto());
     }
 }

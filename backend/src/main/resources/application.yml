@@ -2,6 +2,11 @@ server:
   address: 0.0.0.0
   port: 8080
 
+coolsms:
+  api:
+    key: ""
+    secret: ""
+
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
