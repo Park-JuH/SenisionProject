@@ -10,7 +10,7 @@ public interface AccessRepository extends JpaRepository<AccessEntity, Long> {
 
     AccessEntity findByPhone(String phone);
     Boolean existsByPhone(String access);
-
+    AccessEntity findByAccess(String accessToken);
     @Transactional
     void deleteByPhone(String access);
 }

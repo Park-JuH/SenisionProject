@@ -1,4 +1,4 @@
-package medilux.senisionProject.dto;
+package medilux.senisionProject.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;

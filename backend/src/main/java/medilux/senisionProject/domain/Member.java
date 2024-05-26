@@ -6,32 +6,33 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-//@NoArgsConstructor()
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Member {
 
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
-//    @NonNull
     private String username;
     private String role;
 
     private String phone;
-
-//    @NonNull
     private int age;
 
-    private Date wakeup;
-    private Date breakfast;
-    private Date lunch;
-    private Date dinner;
-    private Date sleep;
-    private String bodypart;
+    private Time wakeup;
+    private Time breakfast;
+    private Time lunch;
+    private Time dinner;
+    private Time sleep;
+    private List<BodyPart> bodyPart;
 
 }

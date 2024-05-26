@@ -3,7 +3,7 @@
 //import jakarta.servlet.FilterChain;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;
-//import medilux.senisionProject.dto.MemberDTO;
+//import medilux.senisionProject.dto.MemberResponseDTO;
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.core.Authentication;
@@ -44,7 +44,7 @@
 //    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) {
 //
 //        //UserDetailsS
-//        MemberDTO memberDTO = (MemberDTO) authentication.getPrincipal();
+//        MemberResponseDTO memberDTO = (MemberResponseDTO) authentication.getPrincipal();
 //
 //        String phone = memberDTO.getPhone();
 //

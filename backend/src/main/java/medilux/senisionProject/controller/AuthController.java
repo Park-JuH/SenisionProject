@@ -1,6 +1,5 @@
 package medilux.senisionProject.controller;
 
-import medilux.senisionProject.dto.JoinDTO;
 import medilux.senisionProject.service.SmsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
