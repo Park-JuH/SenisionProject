@@ -11,15 +11,18 @@ import medilux.senisionProject.jwt.JWTUtil;
 import medilux.senisionProject.repository.AccessRepository;
 import medilux.senisionProject.repository.MemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
     private final JWTUtil jwtUtil;
     private final AccessRepository accessRepository;
+    @Transactional
     public Long joinProcess(JoinDTO joinDTO) {
 
         String username = joinDTO.getUsername();
@@ -42,6 +45,7 @@ public class MemberService {
 
         return newMember.getId();
     }
+    @Transactional
     public LoginDTO loadUserByPhone(String phone) {
 
         Member member = memberRepository.findByPhone(phone);
@@ -61,6 +65,7 @@ public class MemberService {
         return new LoginDTO(MemberResponseDTO.from(member), newAccess);
     }
 
+    @Transactional
     public MemberResponseDTO saveMemberInfo(Member member, MemberRequestDTO memberRequestDTO){
         member.setAge(memberRequestDTO.getAge());
         member.setBreakfast(memberRequestDTO.getBreakfast());
@@ -70,6 +75,7 @@ public class MemberService {
         member.setSleep(memberRequestDTO.getSleep());
         member.setBodyPart(memberRequestDTO.getBodyPart());
 
+        memberRepository.save(member);
         return MemberResponseDTO.from(member);
     }
 
