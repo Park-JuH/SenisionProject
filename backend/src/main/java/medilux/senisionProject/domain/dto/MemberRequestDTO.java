@@ -13,9 +13,9 @@ import java.util.List;
 public class MemberRequestDTO {
     private int age;
     private Time wakeup;
+    private Time sleep;
     private Time breakfast;
     private Time lunch;
     private Time dinner;
-    private Time sleep;
     private List<BodyPart> bodyPart;
 }
