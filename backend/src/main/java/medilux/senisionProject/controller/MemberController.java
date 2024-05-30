@@ -38,7 +38,7 @@ public class MemberController {
     @PostMapping("/join")
     public ResponseEntity<String> join(@RequestBody JoinDTO joinDTO) {
 
-        System.out.println(joinDTO.getUsername());
+        System.out.println(joinDTO.getPhone());
         Long newId = memberService.joinProcess(joinDTO);
 
         if (newId == null) {

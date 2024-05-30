@@ -25,7 +25,6 @@ public class MemberService {
     @Transactional
     public Long joinProcess(JoinDTO joinDTO) {
 
-        String username = joinDTO.getUsername();
         String phone = joinDTO.getPhone();
 
         Boolean isExist = memberRepository.existsByPhone(phone);
@@ -36,10 +35,9 @@ public class MemberService {
 
         Member newMember = new Member();
 
-        newMember.setUsername(username);
         newMember.setPhone(phone);
         newMember.setRole("ROLE_USER");
-        newMember.setAge(20);
+
 
         memberRepository.save(newMember);
 
