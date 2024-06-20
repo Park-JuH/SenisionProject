@@ -35,4 +35,11 @@ public class Member {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nutrient_id")
     private Nutrient nutrient;
+
+    @PrePersist
+    private void ensureNutrientPresent() {
+        if (this.nutrient == null) {
+            this.nutrient = new Nutrient();
+        }
+    }
 }

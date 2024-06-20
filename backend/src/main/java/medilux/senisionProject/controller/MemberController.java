@@ -3,19 +3,18 @@ package medilux.senisionProject.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import medilux.senisionProject.domain.AccessEntity;
 import medilux.senisionProject.domain.Member;
-import medilux.senisionProject.domain.dto.JoinDTO;
-import medilux.senisionProject.domain.dto.LoginDTO;
-import medilux.senisionProject.domain.dto.MemberRequestDTO;
-import medilux.senisionProject.domain.dto.MemberResponseDTO;
+import medilux.senisionProject.domain.Nutrient;
+import medilux.senisionProject.domain.dto.*;
 import medilux.senisionProject.repository.AccessRepository;
 import medilux.senisionProject.repository.MemberRepository;
 import medilux.senisionProject.service.MemberService;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -89,5 +88,44 @@ public class MemberController {
         }catch(Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/api/nutrient")
+    public ResponseEntity<?> getNutrientInfo(@RequestParam Long userId) {
+        Optional<Member> memberOptional = memberRepository.findById(userId);
+        if (memberOptional.isPresent()) {
+            Member member = memberOptional.get();
+            try {
+                Nutrient nutrient = member.getNutrient();
+                NutrientDTO res = NutrientDTO.fromEntity(nutrient);
+                return ResponseEntity.ok(res);
+            } catch (Exception e) {
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+            // 회원 정보로 로직 처리
+        } else {
+            return new ResponseEntity<>("Invalid member Id in DB", HttpStatus.BAD_REQUEST);
+            // 회원 정보가 없는 경우의 로직 처리
+        }
+    }
+
+    @PostMapping("/api/nutrient")
+    public ResponseEntity<?> updateNutrientInfo(@RequestParam Long userId, @RequestParam("file") MultipartFile file) {
+        try {
+            if (file.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File is empty");
+            }
+
+            // Process the file here. For example, saving the file to the server.
+            NutrientDTO updateNutrient = memberService.saveNutrientInfo(userId, file);
+
+            // You might want to return the URL of the saved file or some confirmation message
+            System.out.println("updateNutrient = " + updateNutrient.getProtein());
+            return ResponseEntity.ok(updateNutrient);
+        } catch (Exception e) {
+            // It's a good practice to log the exception here
+            return ResponseEntity.badRequest().body("Failed to upload file: " + e.getMessage());
+        }
+
     }
 }

@@ -27,7 +27,7 @@ public class SmsUtil {
     public SingleMessageSentResponse sendOne(String to, String verificationCode) {
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
-        message.setFrom("01092223463");
+        message.setFrom("");
         message.setTo(to);
         message.setText("[디딤] 아래의 인증번호를 입력해주세요\n" + verificationCode);
 

@@ -27,4 +27,4 @@ spring:
     org.hibernate.SQL: debug
 
   jwt:
-    secret: vmfhaltmskdlstkfkdgodyroqkfwkdbalroqkfwkdbalaaaaaaaaaaaaaaaabbbbb
+    secret:

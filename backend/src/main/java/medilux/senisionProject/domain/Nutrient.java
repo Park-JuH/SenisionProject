@@ -17,14 +17,14 @@ public class Nutrient {
     private Long id;
 
     public Nutrient() {
-        this.calcium = 0L;
-        this.protein = 0L;
+        this.calcium = 0.0;
+        this.protein = 0.0;
         this.calories = 0L;
-        this.vitaminA = 0L;
+        this.vitaminA = 0.0;
     }
 
-    private Long calcium;
-    private Long protein;
+    private Double calcium;
+    private Double protein;
     private Long calories;
-    private Long vitaminA;
+    private Double vitaminA;
 }

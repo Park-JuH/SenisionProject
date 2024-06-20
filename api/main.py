@@ -6,6 +6,8 @@ import io
 import os
 from dotenv import load_dotenv
 import requests
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = FastAPI()
 load_dotenv()
@@ -15,7 +17,7 @@ async def create_upload_file(file: UploadFile = File(...)):
     try:
         # 파일을 메모리에 저장
         contents = await file.read()
-
+    
         # 이미지를 PIL로 열어 544x544로 리사이즈
         image = Image.open(io.BytesIO(contents))
         image = image.resize((544, 544))
@@ -25,7 +27,7 @@ async def create_upload_file(file: UploadFile = File(...)):
     
         # 음식 정보를 추출하기 위한 Calorie Mama API
         base_url = "https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition/full"
-        food_api_key = os.getenv("FOOD_API_KEY")
+        food_api_key = ""
         url = f"{base_url}?user_key={food_api_key}"
 
         files = {
@@ -35,22 +37,31 @@ async def create_upload_file(file: UploadFile = File(...)):
         response = requests.post(url, files=files)
         response_code = response.status_code
         food_title = ""
-        food_nutrition = ""
+        food_nutrition = {}
+        print("response_code", response_code)
         if response_code == 200:
             data = response.json()
             # AI 가 선정한 가장 유사도가 높은 음식으로 가져온다.
             highest_score_item = max(data["results"][0]["items"], key=lambda item: item["score"])
             food_title = highest_score_item["name"] 
-            food_nutrition = highest_score_item["nutrition"]
+            food_nutrition_full = highest_score_item["nutrition"]
+            food_nutrition = {
+                'calcium': food_nutrition_full.get('calcium'),
+                'protein': food_nutrition_full.get('protein'),
+                'calories': food_nutrition_full.get('calories'),
+                'vitaminA': food_nutrition_full.get('vitaminA')
+            }
+            print("food_nutrition", food_nutrition)
         else:
             raise Exception(f"Calorie Mama API 요청 실패: status_code={response_code}")
 
         # 음식 이름을 추출하기 위한 Google Transition API
-        google_api_key = os.getenv("GOOGLE_API_KEY")
-        url =  f'https://translation.googleapis.com/language/translate/v2?q={food_title}&target=ko&key={google_api_key}'
-        res = requests.get(url, verify=False)
-        food_title = res.json()["data"]["translations"][0]["translatedText"]
-        print(food_title)
+        # google_api_key = ""
+        # url =  f'https://translation.googleapis.com/language/translate/v2?q={food_title}&target=ko&key={google_api_key}'
+        # res = requests.get(url, verify=False)
+
+        # food_title = res.json()["data"]["translations"][0]["translatedText"]
+        # print(food_title)
 
         response = {
             "food_title" : food_title,
