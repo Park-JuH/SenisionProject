@@ -20,7 +20,7 @@
 <img width="750" alt="스크린샷 2024-06-20 오후 2 05 37" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/89a22373-06c7-40bb-add2-abafe26ceba3">
 
 ## ERD
-<img width="750" alt="스크린샷 2024-06-20 오후 1 18 56" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/d64f1693-b491-4ac3-ad6d-17401a881ff1">
+<img width="750" alt="스크린샷 2024-06-20 오후 3 48 16" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/12cc88cc-2405-41de-9bd9-e25bf371d519">
 
 ## API 명세서
 <img width="750" alt="스크린샷 2024-06-20 오후 1 35 48" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/2aedf7ca-866f-44e4-b7f8-778c8697f35c">
