@@ -85,6 +85,7 @@ public class MemberService {
         member.setWakeup(memberRequestDTO.getWakeup());
         member.setSleep(memberRequestDTO.getSleep());
         member.setBodyPart(memberRequestDTO.getBodyPart());
+        member.setScore(0);
 
         memberRepository.save(member);
         return MemberResponseDTO.from(member);

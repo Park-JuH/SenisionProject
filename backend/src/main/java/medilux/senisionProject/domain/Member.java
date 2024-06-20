@@ -32,6 +32,8 @@ public class Member {
     private Time sleep;
     private List<BodyPart> bodyPart;
 
+    private int score;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nutrient_id")
     private Nutrient nutrient;
