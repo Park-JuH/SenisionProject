@@ -10,16 +10,16 @@
 1. 이승협(메디컬) : 팀장 및 총괄/메디컬
 2. 김희진 : 백엔드
 3. 김란 : 디자이너
-4. 이윤경 : 풀스택(일단 백엔드 - 안나오면 프론트), 인공지능
-5. 박주혁 : 백엔드, 인공지능
+4. 이윤경 : 인공지능
+5. 박주혁 : 백엔드
 6. 서진영 : 메디컬 및 기획
-7. 이연희 : 백엔드, 인공지능
+7. 이연희 : 인공지능
 8. 박세화 : 프론트 개발
 
 ## Architecture
 <img width="750" alt="스크린샷 2024-06-20 오후 2 05 37" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/89a22373-06c7-40bb-add2-abafe26ceba3">
 
-## ERD
+## IE
 <img width="750" alt="스크린샷 2024-06-20 오후 3 48 16" src="https://github.com/Park-JuH/SenisionProject/assets/83206160/12cc88cc-2405-41de-9bd9-e25bf371d519">
 
 ## API 명세서
